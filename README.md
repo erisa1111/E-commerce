@@ -17,9 +17,9 @@ Responsive Design: Optimized for both mobile and desktop users.
 Technologies Used
 
 Frontend: HTML, CSS, JavaScript
-Backend: Node.js / Django / Laravel (Specify the framework used)
-Database: MySQL / PostgreSQL / MongoDB (Specify the database used)
-Authentication: JWT / OAuth (Specify the authentication method)
+Backend: C#
+Database: MySQL 
+Authentication: still thinking
 
 Usage
 
