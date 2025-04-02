@@ -1,36 +1,38 @@
 <?php
-// Database connection and form processing at the top
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Database configuration
-    $host = 'localhost';
-    $dbname = 'your_database';
-    $username = 'your_username';
-    $password = 'your_password';
+require 'db_connect.php'; // Include the database connection
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-        // Get form data
-        $name = $_POST['name'];
-        $surname = $_POST['surname'];
-        $phone = $_POST['phone'];
-        $country = $_POST['country'];
-        $city = $_POST['city'];
-        $address = $_POST['address'];
-        $email = $_POST['email'];
+        // Validate input
+        if (!isset($_POST['name'], $_POST['surname'], $_POST['phone_number'], $_POST['country'], 
+                  $_POST['city'], $_POST['address'], $_POST['email'], $_POST['password'])) {
+            die("Error: Missing form data.");
+        }
+
+        // Get form data and sanitize
+        $name = trim($_POST['name']);
+        $surname = trim($_POST['surname']);
+        $phone = trim($_POST['phone_number']); // Change 'phone' to 'phone_number' if needed
+        $country = trim($_POST['country']);
+        $city = trim($_POST['city']);
+        $address = trim($_POST['address']);
+        $email = trim($_POST['email']);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        
-        // Insert into database
-        $stmt = $pdo->prepare("INSERT INTO users (name, surname, phone, country, city, address, email, password) 
-                              VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
+        // Prepare SQL query
+        $stmt = $pdo->prepare("INSERT INTO users (name, surname, phone_number, country, city, address, email, password) 
+                               VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([$name, $surname, $phone, $country, $city, $address, $email, $password]);
-        
-        // Redirect on success
-        header("Location: home.html");
-        exit();
+
+        // Debugging: Check if insertion was successful
+        if ($stmt->rowCount() > 0) {
+            header("Location: home.html"); // Redirect on success
+            exit();
+        } else {
+            die("Error: Data was not inserted.");
+        }
     } catch (PDOException $e) {
-        $error = "Error: " . $e->getMessage();
+        die("Database error: " . $e->getMessage()); // Display database errors
     }
 }
 ?>
@@ -54,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3>Personal details</h3>
                 <input type="text" name="name" placeholder="Name" required />
                 <input type="text" name="surname" placeholder="Surname" required />
-                <input type="text" name="phone" placeholder="Phone Number" required />
+                <input type="text" name="phone_number" placeholder="Phone Number" required />
                 <input type="text" name="country" placeholder="Country" required />
                 <input type="text" name="city" placeholder="City" required />
                 <input type="text" name="address" placeholder="Address" required />
