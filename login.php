@@ -1,41 +1,32 @@
 <?php
-// Start session at the very beginning
 session_start();
 
-// Database connection and form processing
+// Include database connection
+require 'db_connect.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Database configuration
-    $host = 'localhost';
-    $dbname = 'your_database';
-    $username = 'your_username';
-    $dbpassword = 'your_password'; // Renamed to avoid conflict with form password
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
 
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $dbpassword);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-        // Get form data
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        
-        // Check if user exists
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->execute([$username]);
+        // Check if user exists by email
+        $stmt = $pdo->prepare("SELECT id, email, password FROM users WHERE email = ? LIMIT 1");
+        $stmt->execute([$email]);
         $user = $stmt->fetch();
-        
+
         if ($user && password_verify($password, $user['password'])) {
             // Set session variables
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
-            
+
             // Redirect to home page
             header("Location: home.php");
             exit();
         } else {
-            $error = "Invalid username or password";
+            $error = "Invalid email or password";
         }
     } catch (PDOException $e) {
-        $error = "Database error: " . $e->getMessage();
+        $error = "Database error: " . htmlspecialchars($e->getMessage());
     }
 }
 ?>
@@ -58,17 +49,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <form action="" method="POST">
                 <h1>Log in</h1>
-                <input type="text" name="username" placeholder="Username or Email" required />
+                <input type="email" name="email" placeholder="Email" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <button type="submit">Log in</button>
+                    <!-- Link to the signup page if the user doesn't have an account -->
+                    <p style="text-align: center; margin-top: 10px;">
+    Don't have an account? <a href="signup.php" style="color: #9e2548; text-decoration: none;">Sign up</a>
+</p>
+
             </form>
+
+         
         </div>
         
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
                     <h1 style="color: #9e2548;">Welcome Back!</h1>
-                    <p style="color: #9e2548">Continue your free experience with Dado!</p>
+                    <p style="color: #9e2548">Continue your experience with GlowHeaven!</p>
                 </div>
             </div>
         </div>

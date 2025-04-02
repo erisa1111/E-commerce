@@ -67,6 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="email" name="email" placeholder="Email" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <button type="submit">Sign Up</button>
+                <p style="text-align: center; margin-top: 10px; font-size: 13px; font-weight:100 ;">
+    Already have an account? <a href="login.php" style="color: #9e2548; text-decoration: none;">Log in</a>
+</p>
             </div>
         </form>
     </div>

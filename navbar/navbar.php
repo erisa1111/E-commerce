@@ -1,3 +1,4 @@
+<?php session_start(); // Start the session to access session data ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="navbar.css"></head>
-    <!-- Add this to your HTML <head> section for the free version -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
 <body>
-    
    <div class="navbar">
     <div class="top-bar">
         <div class="left-nav"></div>
@@ -20,17 +20,30 @@
                 <input type="text" class="search-input" placeholder="Search...">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
-            <i class="fa-regular fa-user"></i>
-            <i class="fa-solid fa-cart-shopping"></i>
-    
+            
+            <!-- Cart Icon -->
+            <i class="fa-solid fa-cart-shopping" style="cursor:pointer;"></i>
+
+            <!-- Conditional user profile or login/signup link, placed after the cart -->
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- If logged in, show the user profile and logout option -->
+                <a href="profile.php">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+                <a href="logout.php">
+                    <i class="fa-solid fa-sign-out-alt"  style="color:white;"></i> 
+                </a>
+            <?php else: ?>
+                <a href="login.php">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+                <!-- If not logged in, show the login/signup option -->
+                
+            <?php endif; ?>
         </div>
     
     </div>
-    
-    
-    
-    
-    </div>
+
     <div class="down-bar">
         <div class="nav-items">
             <!-- Face -->
@@ -88,9 +101,9 @@
                 </div>
             </div>
         </div>
-
-
     </div>
    </div>
 </body>
 </html>
+
+
