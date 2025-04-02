@@ -1,4 +1,4 @@
-<?php session_start(); // Start the session to access session data ?>
+<?php session_start();  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,12 +21,9 @@
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
             
-            <!-- Cart Icon -->
             <i class="fa-solid fa-cart-shopping" style="cursor:pointer;"></i>
 
-            <!-- Conditional user profile or login/signup link, placed after the cart -->
             <?php if (isset($_SESSION['user_id'])): ?>
-                <!-- If logged in, show the user profile and logout option -->
                 <a href="profile.php">
                     <i class="fa-regular fa-user"></i>
                 </a>
@@ -37,7 +34,6 @@
                 <a href="login.php">
                     <i class="fa-regular fa-user"></i>
                 </a>
-                <!-- If not logged in, show the login/signup option -->
                 
             <?php endif; ?>
         </div>
@@ -46,7 +42,6 @@
 
     <div class="down-bar">
         <div class="nav-items">
-            <!-- Face -->
             <div class="nav-item">
                 Face </i>
                 <div class="dropdown">
@@ -57,7 +52,6 @@
                 </div>
             </div>
     
-            <!-- Body -->
             <div class="nav-item">
                 Body </i>
                 <div class="dropdown">
@@ -68,7 +62,6 @@
                 </div>
             </div>
     
-            <!-- Makeup -->
             <div class="nav-item">
                 Makeup </i>
                 <div class="dropdown">
@@ -79,7 +72,6 @@
                 </div>
             </div>
     
-            <!-- Perfumes -->
             <div class="nav-item">
                 Perfumes </i>
                 <div class="dropdown">
@@ -90,7 +82,6 @@
                 </div>
             </div>
     
-            <!-- Hair -->
             <div class="nav-item">
                 Hair </i>
                 <div class="dropdown">

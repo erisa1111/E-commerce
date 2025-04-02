@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-// Redirect to login if not authenticated
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Database connection
+
 require_once 'db_connect.php';
 
-// Get user data
+
 $stmt = $pdo->prepare("SELECT name, email FROM users WHERE id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
