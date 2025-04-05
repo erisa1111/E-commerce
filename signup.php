@@ -12,17 +12,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Get form data and sanitize
         $name = trim($_POST['name']);
         $surname = trim($_POST['surname']);
-        $phone = trim($_POST['phone_number']); // Change 'phone' to 'phone_number' if needed
+        $phone = trim($_POST['phone_number']);
         $country = trim($_POST['country']);
         $city = trim($_POST['city']);
         $address = trim($_POST['address']);
         $email = trim($_POST['email']);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        // Prepare SQL query
-        $stmt = $pdo->prepare("INSERT INTO users (name, surname, phone_number, country, city, address, email, password) 
-                               VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$name, $surname, $phone, $country, $city, $address, $email, $password]);
+        // Assign role based on email
+        $role = ($email === 'admin@gmail.com') ? 'admin' : 'user';
+
+        // Prepare SQL query (added role column)
+        $stmt = $pdo->prepare("INSERT INTO users (name, surname, phone_number, country, city, address, email, password, role) 
+                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$name, $surname, $phone, $country, $city, $address, $email, $password, $role]);
 
         // Debugging: Check if insertion was successful
         if ($stmt->rowCount() > 0) {
@@ -36,6 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

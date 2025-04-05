@@ -1,0 +1,151 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.edit_container{
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  
+
+}
+/* Set the body background and font */
+body {
+
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Container for the form */
+.form-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+   
+}
+
+/* Heading of the page */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Label for the form fields */
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+}
+
+/* Input and select fields */
+input[type="text"], input[type="number"], input[type="file"], select, textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+   /* margin: 10px 0 20px 0;*/
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Input for images */
+input[type="file"] {
+    padding: 3px;
+    background-color: #f8f8f8;
+}
+
+/* Textarea for product description */
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+/* Submit button */
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Reset and cancel buttons */
+button[type="reset"], .cancel-button {
+    background-color: #f44336;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 48%;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="reset"]:hover, .cancel-button:hover {
+    background-color: #e53935;
+}
+
+/* Layout for buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Flexbox for form layout */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input and select fields inline (if needed) */
+.inline-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Small margin between form elements */
+.form-group input, .form-group select, .form-group textarea {
+    margin-bottom: 15px;
+}
+
+/* Make the page responsive */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+        margin-bottom: 12px;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    button[type="reset"], .cancel-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

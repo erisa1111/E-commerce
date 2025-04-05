@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Include database connection
 require 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -9,15 +7,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     try {
-        // Check if user exists by email
-        $stmt = $pdo->prepare("SELECT id, email, password FROM users WHERE email = ? LIMIT 1");
+        // Fetch user data including role
+        $stmt = $pdo->prepare("SELECT id, email, password, role FROM users WHERE email = ? LIMIT 1");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
-            // Set session variables
+            // Store user details in session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
+            $_SESSION['user_role'] = $user['role']; // Store the role
 
             // Redirect to home page
             header("Location: home.php");
@@ -29,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Database error: " . htmlspecialchars($e->getMessage());
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

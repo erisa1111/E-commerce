@@ -10,8 +10,8 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user data
-$stmt = $pdo->prepare("SELECT name, surname, phone_number, email, country, city FROM users WHERE id = ?");
+// Fetch user data including role
+$stmt = $pdo->prepare("SELECT name, surname, phone_number, email, country, city, role FROM users WHERE id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -63,8 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 
 <h2><?php echo htmlspecialchars($user['name']) . ' ' . htmlspecialchars($user['surname']); ?></h2>
   </div>
-
-
 
         <?php if (isset($success))
             echo "<p style='color: green; text-align:center;'>$success</p>"; ?>
