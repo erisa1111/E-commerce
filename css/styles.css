@@ -1,0 +1,108 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.welcome-image-container img {
+    width: 100%;
+    display: block;
+}
+
+.cosmetics-intro {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.cosmetics-intro h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.brands-section {
+    padding: 30px 20px;
+    background-color: #fff;
+}
+
+.brands-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.brands-scroll-container {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 10px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.brands-scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+
+.brand-item {
+    flex: 0 0 auto;
+    width: 120px;
+    height: 120px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.arrow-btn {
+    background-color: #eee;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px 20px;
+    /*background-color: #fafafa;*/
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.category-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.category-label {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin: 20px;
+    font-size: 1rem;
+}
+
+.category-card {
+    text-decoration: none;
+    color: inherit;
+}

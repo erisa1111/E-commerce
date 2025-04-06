@@ -149,3 +149,15 @@
         width: 90%;
     }
 }
+
+.modal-overlay {
+    display: flex; /* makes it center vertically */
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto; /* allows scrolling if modal is too tall */
+}
+
+.modal-content {
+    max-height: 90vh; /* prevents it from overflowing vertically */
+    overflow-y: auto;  /* enables internal scroll */
+}

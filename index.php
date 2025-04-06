@@ -32,18 +32,54 @@ if (isset($_SESSION['user_id'])) {
         <div class="loading-spinner"></div>
     </div>
 
-    <main class="container">
-        <section class="hero">
-            <h1>Your Perfect Skin Journey Starts Here</h1>
-            <p>Discover our premium skincare collection</p>
-            <div class="cta-buttons">
-                <a href="products.php" class="btn-primary">Shop Now</a>
-                <?php if (!$user): ?>
-                    <a href="signup.php" class="btn-secondary">Join Now</a>
-                <?php endif; ?>
+    <!-- Welcome Image Section -->
+    <div class="welcome-image-container">
+        <img src="img/welcome.png" alt="Welcome to GlowHeaven">
+    </div>
+
+    <!-- Cosmetics Intro -->
+    <section class="cosmetics-intro">
+        <h2>Enhance Your Natural Beauty</h2>
+        <p>Explore premium beauty brands and products tailored to your unique glow. We bring the best of skincare, makeup, and more to your fingertips.</p>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <h2>Our Brands</h2>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <button class="arrow-btn" onclick="scrollBrands(-200)"><i class="fas fa-chevron-left"></i></button>
+            <div class="brands-scroll-container" id="brands-scroll">
+                <div class="brand-item">Brand 1</div>
+                <div class="brand-item">Brand 2</div>
+                <div class="brand-item">Brand 3</div>
+                <div class="brand-item">Brand 4</div>
+                <div class="brand-item">Brand 5</div>
             </div>
-        </section>
-    </main>
+            <button class="arrow-btn" onclick="scrollBrands(200)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Category Cards Grid -->
+    <section class="category-grid">
+    <a href="products_by_category.php?category=Perfumes" class="category-card" style="background-image: url('img/perfumes.png');">
+        <div class="category-label">Perfumes</div>
+    </a>
+    <a href="products_by_category.php?category=Skin%20Care" class="category-card" style="background-image: url('img/skincare.png');">
+        <div class="category-label">Skin Care</div>
+    </a>
+    <a href="products_by_category.php?category=Makeup" class="category-card" style="background-image: url('img/makeUp.png');">
+        <div class="category-label">Makeup</div>
+    </a>
+    <a href="products_by_category.php?category=Hair" class="category-card" style="background-image: url('img/hair.png');">
+        <div class="category-label">Hair</div>
+    </a>
+    <a href="products_by_category.php?category=Sun%20Protection" class="category-card" style="background-image: url('img/sunscreen.png');">
+        <div class="category-label">Sun Protection</div>
+    </a>
+    <a href="products_by_category.php?category=New%20Arrivals" class="category-card" style="background-image: url('img/newarrivals.png');">
+        <div class="category-label">New Arrivals</div>
+    </a>
+    </section>
 
     <!-- Footer Container -->
     <div id="footer-container">
