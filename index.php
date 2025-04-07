@@ -1,5 +1,7 @@
+
 <?php
 session_start();
+
 
 // Only connect to DB if user is logged in
 $user = null;
@@ -14,6 +16,7 @@ if (isset($_SESSION['user_id'])) {
         error_log("Database error: " . $e->getMessage());
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,22 +45,33 @@ if (isset($_SESSION['user_id'])) {
         <h2>Enhance Your Natural Beauty</h2>
         <p>Explore premium beauty brands and products tailored to your unique glow. We bring the best of skincare, makeup, and more to your fingertips.</p>
     </section>
-
-    <!-- Brands Section -->
+     
+    
     <section class="brands-section">
-        <h2>Our Brands</h2>
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <button class="arrow-btn" onclick="scrollBrands(-200)"><i class="fas fa-chevron-left"></i></button>
-            <div class="brands-scroll-container" id="brands-scroll">
-                <div class="brand-item">Brand 1</div>
-                <div class="brand-item">Brand 2</div>
-                <div class="brand-item">Brand 3</div>
-                <div class="brand-item">Brand 4</div>
-                <div class="brand-item">Brand 5</div>
-            </div>
-            <button class="arrow-btn" onclick="scrollBrands(200)"><i class="fas fa-chevron-right"></i></button>
+    <h2>Our Brands</h2>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <button class="arrow-btn" onclick="scrollBrands(-200)"><i class="fas fa-chevron-left"></i></button>
+        <div class="brands-scroll-wrapper">
+        <div class="brands-scroll-container" id="brands-scroll" style="display: flex; overflow-x: auto; gap: 20px; padding: 10px;">
+            <div class="brand-item"><img src="img/armaniLogo.png" alt="Armani" style="height: 100px;"></div>
+            <div class="brand-item"><img src="img/CelvinKleinLogo.png" alt="Calvin Klein" style="height: 45px;"></div>
+            <div class="brand-item"><img src="img/ChloeLogo.png" alt="Chloe" style="height: 65px;"></div>
+  
+            <div class="brand-item"><img src="img/hugoBossLogo.png" alt="Hugo" style="height: 60px;"></div>
+            <div class="brand-item"><img src="img/lamerLogo.png" alt="lamer" style="height: 35px;"></div>
+            <div class="brand-item"><img src="img/gucciLogo.png" alt="gucci" style="height: 56px;"></div>
+            <div class="brand-item"><img src="img/lancomeLogo.png" alt="lancome" style="height: 68px;"></div>
+            <div class="brand-item"><img src="img/macLogo.png" alt="mac" style="height: 47px;"></div>
+            <div class="brand-item"><img src="img/estelauderLogo.png" alt="este" style="height: 50px;"></div>
+            <div class="brand-item"><img src="img/ClarinsLogo.png" alt="clarins" style="height: 75px;"></div>
+            <div class="brand-item"><img src="img/diorLogo.png" alt="dior" style="height: 56px;"></div>
+            <div class="brand-item"><img src="img/PradaLogo.png" alt="prada" style="height: 60px;"></div>
+            
         </div>
-    </section>
+        </div>
+        <button class="arrow-btn" onclick="scrollBrands(200)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</section>
 
     <!-- Category Cards Grid -->
     <section class="category-grid">
@@ -80,6 +94,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="category-label">New Arrivals</div>
     </a>
     </section>
+    <br><br><br><br><br><br><br>
 
     <!-- Footer Container -->
     <div id="footer-container">

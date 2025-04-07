@@ -55,6 +55,15 @@ try {
             font-size: 2rem;
             color: #333;
         }
+        .product-card a {
+    display: block;  /* Makes the whole card clickable */
+    text-decoration: none;  /* Remove underline */
+    color: inherit;  /* Inherit text color */
+}
+
+.product-card img {
+    max-width: 100%; /* Make sure the image is responsive */
+}
     </style>
 </head>
 <body>
@@ -68,19 +77,22 @@ try {
 
     <!-- Product Grid -->
     <div class="product-grid">
-        <?php if ($products): ?>
-            <?php foreach ($products as $product): ?>
-                <div class="product-card">
+    <?php if ($products): ?>
+        <?php foreach ($products as $product): ?>
+            <div class="product-card">
+                <!-- Wrap the card in a link to the product details page -->
+                <a href="product_details.php?id=<?= htmlspecialchars($product['id']) ?>" class="product-link">
                     <img src="get_image.php?id=<?= htmlspecialchars($product['id']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                     <h3><?= htmlspecialchars($product['name']) ?></h3>
                     <p><?= htmlspecialchars($product['brand']) ?></p>
                     <p>$<?= number_format($product['price'], 2) ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p style="text-align:center; padding: 20px;">No products found in this category.</p>
-        <?php endif; ?>
-    </div>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p style="text-align:center; padding: 20px;">No products found in this category.</p>
+    <?php endif; ?>
+</div>
 
     <!-- Footer -->
     <div id="footer-container">

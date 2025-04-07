@@ -1,16 +1,44 @@
+
 <?php 
-session_start(); 
+session_start();
+require_once '../db_connect.php';
+
+// Fetch user data if logged in
+$user = null;
+if (isset($_SESSION['user_id'])) {
+    try {
+        $stmt = $pdo->prepare("SELECT name, surname FROM users WHERE id = ?");
+        $stmt->execute([$_SESSION['user_id']]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Database error: " . $e->getMessage());
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--?php
+session_start();
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";  qeta kod e perdor per me kqyr hala a je loggedIN
+
+e qeto e bon per me destroy qat session qe mos me kan logged in anymore
+session_start();
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
+-->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navbar</title>
   <link rel="stylesheet" href="navbar.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Inline styles if needed */
+
     .user-dropdown {
       position: relative;
       display: inline-block;
@@ -67,22 +95,31 @@ session_start();
                 <a href="orders.php">Orders</a>
                 <a href="products.php">Products</a>
                 <a href="profile.php">Edit Profile</a>
+                <a href="logout.php">Log Out</a>
               <?php else: ?>
                 <!-- Regular user dropdown items -->
+                <p style=" margin-left: 15px;color:black;"> <?= htmlspecialchars($user['name']) ?> <?= htmlspecialchars($user['surname']) ?></p>
                 <a href="my_orders.php">My Orders</a>
-                <a href="favorites.php">Favorites</a>
                 <a href="profile.php">Edit Profile</a>
+                <a href="logout.php">Log Out</a>
               <?php endif; ?>
             </div>
           </div>
           <a href="logout.php">
             <i class="fa-solid fa-sign-out-alt" style="color:white;"></i>
           </a>
-        <?php else: ?>
-          <a href="login.php">
-            <i class="fa-regular fa-user"></i>
-          </a>
-        <?php endif; ?>
+          <?php else: ?>
+          <div class="user-dropdown">
+            <div class="user-icon-wrapper">
+               <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="user-dropdown-content">
+               <a href="login.php">Log In</a>
+               <a href="signup.php">Register Today</a>
+            </div>
+          </div>
+           <?php endif; ?>
+
       </div>
     </div>
 
