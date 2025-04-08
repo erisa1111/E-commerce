@@ -1,133 +1,74 @@
-/* Center the profile card */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    width: 100vw;
-   
-
-   
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    color: #111;
 }
 
-/* Profile card */
-.profile-card {
-    background: #ffffff;
-    padding: 20px;
-    width: 500px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    
-
-    
-
-}
-form{
-    display: flex;
-    width: 70%;
-    flex-direction: column;
-    align-items: center;
-
-    margin: 0 auto;
-}
-
-/* Heading */
-.profile-card h2 {
-    margin-bottom: 20px;
-    width: 100%;
-    color: #333;
+h2 {
     text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
-/* Form fields */
-.profile-card label {
-    width: 90%;
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
     text-align: left;
-    color: #9e2548;
 }
 
 .profile-input {
-    width: 90%;
-    font-size: 20px;
-    padding: 8px;
-    margin-top: 5px;
-    border: none;
-    
-
-    border-radius: 5px;
-
-    background: #f9f9f9;
-    cursor: not-allowed;
-}
-
-.profile-input:focus {
-    background: #fff;
-    cursor: text;
-}
-
-/* Buttons */
-button {
-    width: 60%;
-    padding: 10px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 6px;
-    text-align: center;
-    align-self: center;
+    padding: 12px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+button[type="button"],
+button[type="submit"] {
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
     cursor: pointer;
-}
-
-#edit-btn {
-    background-color: #9e2548;
+    background-color: #c7012d;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
-#edit-btn:hover {
-    background-color: #b84968;
+button[type="button"]:hover,
+button[type="submit"]:hover {
+    background-color: #a90026;
 }
 
 #save-btn {
-    background-color: #28a745;
-    color: white;
     display: none;
 }
 
-#save-btn:hover {
-    background-color: #218838;
-}
-
-/* Back to Home Link */
-.back-link {
-    display: block;
-    margin-top: 15px;
-    text-decoration: none;
-    color: #5f7083;
-    background-color: #5f7083;
-}
-.fa-arrow-left {
-    color: #9e2548;
-}
-.fa-arrow-left:hover {
-    text-decoration: underline;
-    color: #b84968;
-}
-.bottom-space{
-    width: 100%;
+.bottom-space {
     height: 30px;
 }
-img{
-    width: 100px;
-    text-align: center;
-}
-.info{
-    width: 30%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+a {
+    text-decoration: none;
+    color: #111;
+    font-size: 18px;
+    display: block;
+    margin: 20px auto 0 20px;
 }

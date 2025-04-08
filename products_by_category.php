@@ -56,9 +56,9 @@ try {
             color: #333;
         }
         .product-card a {
-    display: block;  /* Makes the whole card clickable */
-    text-decoration: none;  /* Remove underline */
-    color: inherit;  /* Inherit text color */
+    display: block;  
+    text-decoration: none;  
+    color: inherit; 
 }
 
 .product-card img {
@@ -74,6 +74,12 @@ try {
 
     <!-- Page Title -->
     <h2 class="category-title"><?= htmlspecialchars($categoryName) ?> Products</h2>
+
+    <div class="products-page-container">
+    <div class="product-filter">
+        <p>its supposed to be a filter nese  e bajm</p>
+
+    </div>
 
     <!-- Product Grid -->
     <div class="product-grid">
@@ -92,6 +98,7 @@ try {
     <?php else: ?>
         <p style="text-align:center; padding: 20px;">No products found in this category.</p>
     <?php endif; ?>
+</div>
 </div>
 
     <!-- Footer -->

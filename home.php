@@ -43,9 +43,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
 
 
-    <?php if ($user): ?>
-       <div class="welcome-user">Welcome back, <?= htmlspecialchars($user['name']) ?>! 🌟</div>
-    <?php endif; ?>
+    
+  
 
     <!-- Welcome Image Section -->
     <div class="welcome-image-container">

@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 <div class="profile-card">
   <a href="home.php"><i class="fa-solid fa-arrow-left"></i></a>
   <div class="info">
-  <img src="/img/profile_picture.png" alt="">
+
 
 <h2><?php echo htmlspecialchars($user['name']) . ' ' . htmlspecialchars($user['surname']); ?></h2>
   </div>

@@ -44,19 +44,21 @@ try {
     <style>
         .product-details-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             margin: 40px;
+           padding: 70px;
+           flex-wrap: wrap;
         }
         .product-image {
-            width: 50%;
+            width: 40%; 
             text-align: center;
         }
         .product-image img {
-            width: 80%;
-            max-width: 400px;
+            width: 100%; 
+            max-width: 350px;
         }
         .product-info {
-            width: 45%;
+            width: 40%;
         }
         .product-info h1 {
             font-size: 2rem;
@@ -90,6 +92,8 @@ try {
         }
         .product-description {
             margin-top: 20px;
+            justify-content: center;
+           
         }
     </style>
 </head>

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Debugging: Check if insertion was successful
         if ($stmt->rowCount() > 0) {
-            header("Location: home.html"); // Redirect on success
+            header("Location: home.php"); // Redirect on success
             exit();
         } else {
             die("Error: Data was not inserted.");

@@ -7,7 +7,8 @@ body {
     width: 100%;
     color: white;
 
-   background-color: #9e2548;
+   /*background-color: #9e2548;*/
+   background-color: black;
 }
 .left-nav{
     width: 20%;
@@ -73,10 +74,11 @@ body {
 .nav-item {
     position: relative;
     padding: 10px 15px;
-    cursor: pointer;
     font-weight: 600;
-    color: #333;
+    color:#c74e71;
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .nav-item:hover {
@@ -138,3 +140,4 @@ body {
 .user-dropdown-content a{
     cursor: pointer;
 }
+
