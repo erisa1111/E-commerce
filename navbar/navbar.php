@@ -124,54 +124,106 @@ echo "</pre>";
     </div>
 
     <div class="down-bar">
-      <div class="nav-items">
-        <div class="nav-item">
-          Face
-          <div class="dropdown">
-            <div class="dropdown-item">Moisturizers</div>
-            <div class="dropdown-item">Cleansers</div>
-            <div class="dropdown-item">Serums</div>
-            <div class="dropdown-item">Masks</div>
-          </div>
-        </div>
-        <div class="nav-item">
-          Body
-          <div class="dropdown">
-            <div class="dropdown-item">Body Lotions</div>
-            <div class="dropdown-item">Sunscreen</div>
-            <div class="dropdown-item">Exfoliators</div>
-            <div class="dropdown-item">Body Oils</div>
-          </div>
-        </div>
-        <div class="nav-item">
-          Makeup
-          <div class="dropdown">
-            <div class="dropdown-item">Foundation</div>
-            <div class="dropdown-item">Lipstick</div>
-            <div class="dropdown-item">Eyeshadow</div>
-            <div class="dropdown-item">Mascara</div>
-          </div>
-        </div>
-        <div class="nav-item">
-          Perfumes
-          <div class="dropdown">
-            <div class="dropdown-item">Floral</div>
-            <div class="dropdown-item">Woody</div>
-            <div class="dropdown-item">Citrus</div>
-            <div class="dropdown-item">Unisex</div>
-          </div>
-        </div>
-        <div class="nav-item">
-          Hair
-          <div class="dropdown">
-            <div class="dropdown-item">Shampoo</div>
-            <div class="dropdown-item">Conditioner</div>
-            <div class="dropdown-item">Hair Masks</div>
-            <div class="dropdown-item">Styling Products</div>
-          </div>
+    <div class="nav-items">
+
+      <div class="nav-item">
+        Perfumes
+        <div class="dropdown">
+          <div class="dropdown-item">Eau de Parfum</div>
+          <div class="dropdown-item">Eau de Toilette</div>
+          <div class="dropdown-item">Body Mist</div>
+          <div class="dropdown-item">Perfume Oils</div>
+          <div class="dropdown-item">Travel-size</div>
+          <div class="dropdown-item">Fragrance Sets</div>
+          <div class="dropdown-item">Oud Perfumes</div>
+          <div class="dropdown-item">Unisex Scents</div>
+          <div class="dropdown-item">Rollerballs</div>
+          <div class="dropdown-item">Solid Perfumes</div>
         </div>
       </div>
+
+      <div class="nav-item">
+        Skin Care
+        <div class="dropdown">
+          <div class="dropdown-item">Cleansers</div>
+          <div class="dropdown-item">Toners</div>
+          <div class="dropdown-item">Serums</div>
+          <div class="dropdown-item">Moisturizers</div>
+          <div class="dropdown-item">Eye Creams</div>
+          <div class="dropdown-item">Face Masks</div>
+          <div class="dropdown-item">Exfoliators</div>
+          <div class="dropdown-item">Lip Care</div>
+          <div class="dropdown-item">Anti-Aging</div>
+          <div class="dropdown-item">Brightening</div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        Makeup
+        <div class="dropdown">
+          <div class="dropdown-item">Foundations</div>
+          <div class="dropdown-item">Concealers</div>
+          <div class="dropdown-item">Powders</div>
+          <div class="dropdown-item">Primers</div>
+          <div class="dropdown-item">Blushes</div>
+          <div class="dropdown-item">Highlighters</div>
+          <div class="dropdown-item">Lipsticks</div>
+          <div class="dropdown-item">Mascaras</div>
+          <div class="dropdown-item">Eyeliners</div>
+          <div class="dropdown-item">Brows</div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        Hair
+        <div class="dropdown">
+          <div class="dropdown-item">Shampoos</div>
+          <div class="dropdown-item">Conditioners</div>
+          <div class="dropdown-item">Hair Masks</div>
+          <div class="dropdown-item">Hair Oils</div>
+          <div class="dropdown-item">Serums</div>
+          <div class="dropdown-item">Heat Protectants</div>
+          <div class="dropdown-item">Dry Shampoo</div>
+          <div class="dropdown-item">Hair Color</div>
+          <div class="dropdown-item">Curl Enhancers</div>
+          <div class="dropdown-item">Hair Sprays</div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        Sun Protection
+        <div class="dropdown">
+          <div class="dropdown-item">Face SPF</div>
+          <div class="dropdown-item">Body SPF</div>
+          <div class="dropdown-item">Tinted Sunscreens</div>
+          <div class="dropdown-item">Sunscreen Sticks</div>
+          <div class="dropdown-item">After-Sun</div>
+          <div class="dropdown-item">Mineral SPF</div>
+          <div class="dropdown-item">Spray SPF</div>
+          <div class="dropdown-item">Waterproof SPF</div>
+          <div class="dropdown-item">Kids & Baby SPF</div>
+          <div class="dropdown-item">SPF Lip Balm</div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        New Arrivals
+        <div class="dropdown">
+          <div class="dropdown-item">New in Skincare</div>
+          <div class="dropdown-item">New in Makeup</div>
+          <div class="dropdown-item">New in Hair</div>
+          <div class="dropdown-item">New in Perfume</div>
+          <div class="dropdown-item">New in Body</div>
+          <div class="dropdown-item">New Brands</div>
+          <div class="dropdown-item">Limited Edition</div>
+          <div class="dropdown-item">Trending Now</div>
+          <div class="dropdown-item">Restocked</div>
+          <div class="dropdown-item">Staff Picks</div>
+        </div>
+      </div>
+
     </div>
+  </div>
   </div>
 </body>
 </html>
