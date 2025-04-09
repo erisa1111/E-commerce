@@ -42,8 +42,8 @@ if (isset($_SESSION['user_id'])) {
 
     <!-- Cosmetics Intro -->
     <section class="cosmetics-intro">
-        <h2>Enhance Your Natural Beauty</h2>
-        <p>Explore premium beauty brands and products tailored to your unique glow. We bring the best of skincare, makeup, and more to your fingertips.</p>
+       <h2>Enhance Your Natural Beauty</h2>
+       <p>Explore a wide range of premium beauty brands and products designed to enhance your natural radiance. Whether you're looking for rejuvenating skincare, luxurious makeup, or effective hair care solutions, we offer the best products tailored to your unique beauty needs. Our collection features top-rated brands that prioritize quality, innovation, and sustainability. Embrace the glow within you with the help of our carefully curated selection of beauty essentials. Discover products that not only nourish your skin but also elevate your confidence and well-being. With every product, we strive to provide you with the ultimate beauty experience, bringing you the best of skincare, makeup, and personal care, all in one place. Your beauty journey begins here with us!</p>
     </section>
      
     

@@ -9,12 +9,26 @@
 }
 
 .product-filter {
-    width: 40%;
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    overflow: auto;
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .product-grid-scrollable {
@@ -31,8 +45,6 @@
     max-width: 900px;
     padding-left: 50px;
     padding-right: 50px;
-
-    /* Optional: keep a bit of top and bottom padding */
     padding-top: 15px;
     padding-bottom: 15px;
 }

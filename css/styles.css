@@ -114,3 +114,40 @@ html, body {
     text-decoration: none;
     color: inherit;
 }
+
+.cosmetics-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.cosmetics-intro h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cosmetics-intro p {
+    font-size: 1.2rem;
+    color: #555;
+    width: 100%;
+    white-space: nowrap;       
+    overflow: hidden;          
+    position: relative;
+    display: inline-block;
+}
+
+.cosmetics-intro p {
+    animation: scroll-left 30s linear infinite;  
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);  
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}

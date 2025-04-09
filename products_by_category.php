@@ -1,35 +1,66 @@
-<?php
-session_start();
+<?php 
+// Connect to DB
 require_once 'db_connect.php';
 
-// Get user if logged in
-$user = null;
-if (isset($_SESSION['user_id'])) {
-    try {
-        $stmt = $pdo->prepare("SELECT name, email FROM users WHERE id = ?");
-        $stmt->execute([$_SESSION['user_id']]);
-        $user = $stmt->fetch();
-    } catch (PDOException $e) {
-        error_log("Database error: " . $e->getMessage());
-    }
+// STEP 1: Get the category name from URL
+$categoryName = $_GET['category'] ?? null;
+if (!$categoryName) {
+    echo "Category not specified.";
+    exit;
 }
 
-// Get category
-$categoryName = isset($_GET['category']) ? $_GET['category'] : '';
-if (!$categoryName) {
-    die("Category not specified.");
+$selectedSub = $_GET['sub'] ?? null;
+$selectedBrand = $_GET['brand'] ?? null;
+$selectedGender = $_GET['gender'] ?? null;
+
+
+try {
+    $stmt = $pdo->prepare("SELECT DISTINCT sc.sub_name 
+                           FROM sub_category sc
+                           JOIN category c ON sc.category_id = c.category_id
+                           WHERE c.category_name = ?");
+    $stmt->execute([$categoryName]);
+    $subcategories = $stmt->fetchAll(PDO::FETCH_COLUMN);
+} catch (PDOException $e) {
+    $subcategories = [];
 }
 
 try {
-    $stmt = $pdo->prepare("SELECT p.*, sc.sub_name, c.category_name
+    $stmt = $pdo->prepare("SELECT DISTINCT p.brand
                            FROM product p
                            JOIN sub_category sc ON p.subcategory_id = sc.subcategory_id
                            JOIN category c ON sc.category_id = c.category_id
                            WHERE c.category_name = ?");
     $stmt->execute([$categoryName]);
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $brands = $stmt->fetchAll(PDO::FETCH_COLUMN);
 } catch (PDOException $e) {
-    die("Error fetching products: " . $e->getMessage());
+    $brands = [];
+}
+
+
+
+$sql = "SELECT p.* FROM product p
+        JOIN sub_category sc ON p.subcategory_id = sc.subcategory_id
+        JOIN category c ON sc.category_id = c.category_id
+        WHERE c.category_name = ?";
+$params = [$categoryName];
+
+if (!empty($selectedSub)) {
+    $sql .= " AND sc.sub_name IN (" . implode(',', array_fill(0, count($selectedSub), '?')) . ")";
+    $params = array_merge($params, $selectedSub); 
+}
+
+if (!empty($selectedBrand)) {
+    $sql .= " AND p.brand IN (" . implode(',', array_fill(0, count($selectedBrand), '?')) . ")";
+    $params = array_merge($params, $selectedBrand); 
+}
+
+try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $products = $stmt->fetchAll();
+} catch (PDOException $e) {
+    $products = [];
 }
 ?>
 
@@ -56,14 +87,14 @@ try {
             color: #333;
         }
         .product-card a {
-    display: block;  
-    text-decoration: none;  
-    color: inherit; 
-}
+            display: block;  
+            text-decoration: none;  
+            color: inherit; 
+        }
 
-.product-card img {
-    max-width: 100%; /* Make sure the image is responsive */
-}
+        .product-card img {
+            max-width: 100%; /* Make sure the image is responsive */
+        }
     </style>
 </head>
 <body>
@@ -76,30 +107,53 @@ try {
     <h2 class="category-title"><?= htmlspecialchars($categoryName) ?> Products</h2>
 
     <div class="products-page-container">
-    <div class="product-filter">
-        <p>its supposed to be a filter nese  e bajm</p>
+    <form method="GET" action="products_by_category.php">
+        <input type="hidden" name="category" value="<?= htmlspecialchars($categoryName) ?>">
 
-    </div>
+        <!-- Subcategory Filter -->
+        <div class="filter-section">
+            <h4>Subcategories</h4>
+            <?php foreach ($subcategories as $sub): ?>
+                <label>
+                    <input type="checkbox" name="sub[]" value="<?= $sub ?>" <?= isset($_GET['sub']) && in_array($sub, $_GET['sub']) ? 'checked' : '' ?>>
+                    <?= $sub ?>
+                </label><br>
+            <?php endforeach; ?>
+        </div>
+
+        <!-- Brand Filter -->
+        <div class="filter-section">
+            <h4>Brands</h4>
+            <?php foreach ($brands as $brand): ?>
+                <label>
+                    <input type="checkbox" name="brand[]" value="<?= $brand ?>" <?= isset($_GET['brand']) && in_array($brand, $_GET['brand']) ? 'checked' : '' ?>>
+                    <?= $brand ?>
+                </label><br>
+            <?php endforeach; ?>
+        </div>
+
+        <button type="submit">Apply Filters</button>
+    </form>
 
     <!-- Product Grid -->
     <div class="product-grid">
-    <?php if ($products): ?>
-        <?php foreach ($products as $product): ?>
-            <div class="product-card">
-                <!-- Wrap the card in a link to the product details page -->
-                <a href="product_details.php?id=<?= htmlspecialchars($product['id']) ?>" class="product-link">
-                    <img src="get_image.php?id=<?= htmlspecialchars($product['id']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                    <h3><?= htmlspecialchars($product['name']) ?></h3>
-                    <p><?= htmlspecialchars($product['brand']) ?></p>
-                    <p>$<?= number_format($product['price'], 2) ?></p>
-                </a>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p style="text-align:center; padding: 20px;">No products found in this category.</p>
-    <?php endif; ?>
-</div>
-</div>
+        <?php if ($products): ?>
+            <?php foreach ($products as $product): ?>
+                <div class="product-card">
+                    <!-- Wrap the card in a link to the product details page -->
+                    <a href="product_details.php?id=<?= htmlspecialchars($product['id']) ?>" class="product-link">
+                        <img src="get_image.php?id=<?= htmlspecialchars($product['id']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                        <h3><?= htmlspecialchars($product['name']) ?></h3>
+                        <p><?= htmlspecialchars($product['brand']) ?></p>
+                        <p>$<?= number_format($product['price'], 2) ?></p>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p style="text-align:center; padding: 20px;">No products found in this category.</p>
+        <?php endif; ?>
+    </div>
+    </div>
 
     <!-- Footer -->
     <div id="footer-container">
