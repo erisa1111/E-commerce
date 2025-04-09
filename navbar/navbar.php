@@ -1,20 +1,20 @@
-
 <?php 
-session_start();
-require_once '../db_connect.php';
+// Avoid starting the session again if it's already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Fetch user data if logged in
+require_once __DIR__ . '/../db_connect.php';
+
 $user = null;
 if (isset($_SESSION['user_id'])) {
     try {
-        $stmt = $pdo->prepare("SELECT name, surname FROM users WHERE id = ?");
-        $stmt->execute([$_SESSION['user_id']]);
+      $stmt = $pdo->prepare("SELECT name, surname, address, city, country FROM users WHERE id = ?");        $stmt->execute([$_SESSION['user_id']]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         error_log("Database error: " . $e->getMessage());
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +37,7 @@ echo "</pre>";
   <title>Navbar</title>
   <link rel="stylesheet" href="navbar.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
 
     .user-dropdown {
@@ -82,7 +83,9 @@ echo "</pre>";
           <input type="text" class="search-input" placeholder="Search...">
           <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
-        <i class="fa-solid fa-cart-shopping" style="cursor:pointer;"></i>
+        <a href="cart.php" title="View Cart">
+    <i class="fa-solid fa-cart-shopping" ></i>
+</a>
         
         <?php if (isset($_SESSION['user_id'])): ?>
           <div class="user-dropdown">
@@ -92,21 +95,21 @@ echo "</pre>";
             <div class="user-dropdown-content">
               <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin'): ?>
                 <!-- Admin dropdown items -->
-                <a href="orders.php">Orders</a>
+                <a href="admin_orders.php">Orders</a>
                 <a href="products.php">Products</a>
                 <a href="profile.php">Edit Profile</a>
                 <a href="logout.php">Log Out</a>
               <?php else: ?>
                 <!-- Regular user dropdown items -->
                 <p style=" margin-left: 15px;color:black;"> <?= htmlspecialchars($user['name']) ?> <?= htmlspecialchars($user['surname']) ?></p>
-                <a href="my_orders.php">My Orders</a>
+                <a href="order_history.php">My Orders</a>
                 <a href="profile.php">Edit Profile</a>
                 <a href="logout.php">Log Out</a>
               <?php endif; ?>
             </div>
           </div>
           <a href="logout.php">
-            <i class="fa-solid fa-sign-out-alt" style="color:white;"></i>
+            <i class="fa-solid fa-sign-out-alt" ></i>
           </a>
           <?php else: ?>
           <div class="user-dropdown">
@@ -118,7 +121,7 @@ echo "</pre>";
                <a href="signup.php">Register Today</a>
             </div>
           </div>
-           <?php endif; ?>
+        <?php endif; ?>
 
       </div>
     </div>

@@ -18,8 +18,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_role'] = $user['role']; // Store the role
 
+            if (isset($_COOKIE['persistent_cart'])) {
+                $cartData = json_decode($_COOKIE['persistent_cart'], true);
+                if ($cartData !== null) { // Valid JSON
+                    $_SESSION['cart'] = $cartData;
+                    // Clear the cookie after loading
+                    setcookie('persistent_cart', '', time() - 3600, '/');
+                }
+            }
+
             // Redirect to home page
             header("Location: home.php");
+            
+            
             exit();
         } else {
             $error = "Invalid email or password";

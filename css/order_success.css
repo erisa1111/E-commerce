@@ -1,0 +1,110 @@
+/* order_success.css */
+.success-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    font-family: 'Arial', sans-serif;
+}
+
+.success-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+h1 {
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+}
+
+.order-number {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.order-summary, .order-items, .delivery-info {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+h2, h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.summary-row span:first-child {
+    font-weight: bold;
+    color: #555;
+}
+
+.order-items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-items li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.delivery-info p {
+    white-space: pre-line;
+    margin: 0.5rem 0 0;
+    line-height: 1.6;
+}
+
+.continue-shopping {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.continue-shopping:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    .success-container {
+        padding: 1rem;
+    }
+    
+    .success-card {
+        padding: 1.5rem;
+    }
+}

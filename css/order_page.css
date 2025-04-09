@@ -1,0 +1,107 @@
+/* General Reset */
+* {
+    
+    padding: 0;
+
+}
+
+
+/* Main container */
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* Title Styling */
+h2 {
+    margin-top: 20px;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Subheading */
+h3 {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Textarea for delivery address */
+textarea {
+    width: 90%;
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    resize: vertical;
+    margin-bottom: 20px;
+}
+
+/* Products list */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+ul li {
+    padding: 8px;
+    font-size: 1em;
+    border-bottom: 1px solid #eaeaea;
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid #9e2548;
+    background-color: #9e2548;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+button:active {
+    transform: scale(0.95);
+}
+button:focus {
+    outline: none;
+}
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+button:hover{
+    background-color: #b33256;
+    border: 1px solid #b33256;
+
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    h2 {
+        font-size: 1.5em;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    textarea {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 1.1em;
+        padding: 12px 20px;
+    }
+}

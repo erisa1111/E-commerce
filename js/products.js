@@ -69,7 +69,7 @@ if (categorySelect && subcategorySelect) {
         })
         .catch(error => console.error('Error loading navbar:', error));
 
-    fetch("footer/footer.html")
+    fetch("footer/footer.php")
         .then(response => response.text())
         .then(data => {
             const footerContainer = document.getElementById('footer-container');

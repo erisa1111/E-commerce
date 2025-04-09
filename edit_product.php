@@ -192,7 +192,7 @@ try {
                     document.getElementById('navbar-container').innerHTML = data;
                 });
             
-            fetch("footer/footer.html")
+            fetch("footer/footer.php")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-container').innerHTML = data;

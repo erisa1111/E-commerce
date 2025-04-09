@@ -121,12 +121,14 @@ body {
     margin-left: 5px;
     font-size: 12px;
 }
-.fa-user
+.fa-user,
+.fa-cart-shopping
 {
     color: white;
 }
 .fa-regular:hover,
-.fa-solid:hover{
+.fa-solid:hover,
+.fa-sign-out-alt{
     color: #d989a0;
     cursor: pointer;
 

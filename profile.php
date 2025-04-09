@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
                     document.getElementById('navbar-container').innerHTML = data;
                 });
 
-            fetch("footer/footer.html")
+            fetch("footer/footer.php")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-container').innerHTML = data;

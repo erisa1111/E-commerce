@@ -65,7 +65,7 @@ button[type="submit"]:hover {
     height: 30px;
 }
 
-a {
+.fa-arrow-left {
     text-decoration: none;
     color: #111;
     font-size: 18px;

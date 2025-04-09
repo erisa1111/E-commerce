@@ -25,7 +25,7 @@ async function loadComponent(containerId, filePath) {
 document.addEventListener('DOMContentLoaded', () => {
     // Load navbar and footer components
     loadComponent('navbar-container', 'navbar/navbar.php');
-    loadComponent('footer-container', 'footer/footer.html');
+    loadComponent('footer-container', 'footer/footer.php');
     
     // You can add more components here if needed
     // loadComponent('another-container', 'path/to/component.html');
