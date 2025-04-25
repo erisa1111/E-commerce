@@ -44,7 +44,6 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="success-card">
       <div class="success-icon">✓</div>
       <h1 class="konfirmimi">Order Confirmed!</h1>
-      
       <div class="order-summary">
         <h2>Order Summary</h2>
         <div class="summary-row">
