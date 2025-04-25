@@ -15,7 +15,7 @@ if ($response === false) {
 
 // Check for expected content
 if (strpos($response, 'product-card') !== false) {
-    echo "✅ Product cards found for category 'Makeup'.\n";
+    echo "✅ Product cards found for category 'Makeup'.\n";}
 if ($response === false) {
     echo "❌ Failed to load the page. Make sure your database is correctly running\n";
     exit;
