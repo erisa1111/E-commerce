@@ -43,11 +43,11 @@ html, body {
     overflow-x: auto;
     gap: 20px;
     padding: 20px 10px;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
 }
 
 .brands-scroll-container::-webkit-scrollbar {
-    display: none; /* Chrome */
+    display: none;
     padding: 10px 10px;
 }
 
@@ -140,7 +140,8 @@ html, body {
 }
 
 .cosmetics-intro p {
-    animation: scroll-left 30s linear infinite;  
+
+    
 }
 
 @keyframes scroll-left {
