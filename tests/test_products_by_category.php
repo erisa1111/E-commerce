@@ -1,25 +1,24 @@
 <?php
 echo "🔍 Running test: products_by_category.php...\n";
 
-// Simulate a GET request
-$_GET['category'] = 'Makeup'; // Replace with a valid category from your DB
+// Simulate a request to the real server
+$url = "http://localhost/E-commerce/products_by_category.php?category=Makeup";
+$response = @file_get_contents($url);
 
-// Capture the output of the product page
-ob_start();
-include '../products_by_category.php';
-$output = ob_get_clean();
+if ($response === false) {
+    echo "❌ Failed to load the page. Make sure your database is correctly connected\n";
+    exit;
+}
 
-// Basic check: Did it load any products?
-if (strpos($output, 'class="product-card"') !== false) {
-    echo "✅ Test passed: At least one product is displayed.\n";
+// Check for expected content
+if (strpos($response, 'product-card') !== false) {
+    echo "✅ Product cards found for category 'Makeup'.\n";
 } else {
     echo "❌ Test failed: No product cards found for category 'Makeup'.\n";
 }
 
-// Optional: check if product name/brand shows up
-$expectedText = 'Products'; // Page should say "Makeup Products" or similar
-if (strpos($output, $expectedText) !== false) {
-    echo "✅ Title check passed: Page displays category name.\n";
+if (strpos($response, 'Makeup Products') !== false) {
+    echo "✅ Title includes category name.\n";
 } else {
     echo "⚠️ Title check failed: Category name not shown.\n";
 }
