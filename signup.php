@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Debugging: Check if insertion was successful
         if ($stmt->rowCount() > 0) {
+            echo "User registered successfully.\n";
+            // per me na funksionu mire test_signup.php duhet me komentu header
             header("Location: home.php"); // Redirect on success
             exit();
         } else {

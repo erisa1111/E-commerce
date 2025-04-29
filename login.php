@@ -32,11 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
-            // Redirect to home page
-            header("Location: home.php");
-            
-            
-            exit();
+            // Don't redirect if we're in test mode
+            if (!defined('TESTING')) {
+                header("Location: home.php");
+                exit();
+            }
         } else {
             $error = "Invalid email or password";
         }
@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Database error: " . htmlspecialchars($e->getMessage());
     }
 }
+
 
 ?>
 <!DOCTYPE html>

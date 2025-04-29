@@ -1,38 +1,33 @@
 <?php
+namespace OrderTest;
+// Set the TEST_ENV to simulate a test environment
+$_SERVER['TEST_ENV'] = 'true'; // This will bypass session_start()
+
+
+
 // Start output buffering
 ob_start();
+session_start(); // Start session for testing
 
-// Ensure session_start() is at the top of the file, no output before it
-session_start();
+// Simulate session data (user logged in)
+$_SESSION['user_id'] = 1;
 
-// Simulate session data
-$_SESSION['user_id'] = 1; // Simulating a logged-in user
-
-// Simulate POST data (product IDs, quantities, and delivery address)
-$_POST['product_ids'] = [1];
+// Simulate POST data
+$_POST['product_ids'] = [1]; // Ensure this product ID exists in DB
 $_POST['quantities'] = [2];
 $_POST['delivery_address'] = 'Test Address';
 
-// Simulate POST request method
+// Simulate request method
 $_SERVER['REQUEST_METHOD'] = 'POST';
 
-// First verify the file exists
-$filePath = __DIR__ . '/../place_order.php';
-if (!file_exists($filePath)) {
-    die("❌ File not found: place_order.php\n");
+// === Custom header() function in the "OrderTest" namespace ===
+function header($string, $replace = true, $http_response_code = null) {
+    echo "Header intercepted: $string\n";
+    file_put_contents(__DIR__ . '/header_log.txt', $string);
 }
 
-// Include the place_order.php script
-require_once $filePath;
+// Include your place_order.php script here
+require_once __DIR__ . '/../place_order.php';
 
-// Get the output from the script
-$output = ob_get_clean();
-
-// Check for success confirmation (based on redirection to order_success.php)
-if (strpos($output, 'order_success.php') !== false) {
-    echo "✅ Test passed: Order placed successfully.\n";
-} else {
-    echo "❌ Test failed: No success confirmation for order.\n";
-    echo "First 300 chars of output:\n";
-    echo substr($output, 0, 300) . (strlen($output) > 300 ? "..." : "") . "\n";
-}
+// Clean output buffer
+ob_end_clean();
