@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Check if the cart is in the session
+// shikon ense karta eshte ne sesiom
 $cart = $_SESSION['cart'] ?? [];
 
 // If the cart is empty in the session, try reading it from the cookie

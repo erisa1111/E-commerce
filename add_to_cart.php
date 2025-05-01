@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("SELECT id, name, price, image FROM product WHERE id = ?");
     $stmt->execute([$productId]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-
+//nese nuk gjehet produkti
     if (!$product) {
         http_response_code(404);
         echo "Product not found";
