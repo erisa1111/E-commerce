@@ -39,7 +39,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
   <?php include 'navbar/navbar.php'; ?>
-
+<!--me kallxu qe u kry order me sukses-->
   <div class="success-container">
     <div class="success-card">
       <div class="success-icon">✓</div>
