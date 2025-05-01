@@ -33,7 +33,7 @@ if ($fromCart) {
     }
 }
 ?>
-
+<!--pjesa ku na shfaqet porosia -->
 <!DOCTYPE html>
 <html>
 <head>

@@ -64,3 +64,4 @@ try {
     $pdo->rollBack();
     die("Error placing order: " . $e->getMessage());
 }
+//kjo veq bo place order
