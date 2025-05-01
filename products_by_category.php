@@ -1,7 +1,10 @@
 <?php 
 // Connect to DB
+// Ktu e lidh databazën me projektin
 require_once 'db_connect.php';
 
+
+// Marrim emrin e kategorisë prej URL-së
 // STEP 1: Get the category name from URL
 $categoryName = $_GET['category'] ?? null;
 if (!$categoryName) {
@@ -9,22 +12,27 @@ if (!$categoryName) {
     exit;
 }
 
+// Marrim filtrat nese ekzistojn prej URL-së
 $selectedSub = $_GET['sub'] ?? null;
 $selectedBrand = $_GET['brand'] ?? null;
 $selectedGender = $_GET['gender'] ?? null;
 
 
 try {
+      // Query me i nxjerr subkategori per kategorinë e dhënë
     $stmt = $pdo->prepare("SELECT DISTINCT sc.sub_name 
                            FROM sub_category sc
                            JOIN category c ON sc.category_id = c.category_id
                            WHERE c.category_name = ?");
     $stmt->execute([$categoryName]);
     $subcategories = $stmt->fetchAll(PDO::FETCH_COLUMN);
-} catch (PDOException $e) {
+}
+  // Nëse ka naj problem, leji subkategori t'bosh 
+catch (PDOException $e) {
     $subcategories = [];
 }
 
+// Nxjerrim brandat që i takojnë kategorisë
 try {
     $stmt = $pdo->prepare("SELECT DISTINCT p.brand
                            FROM product p
@@ -38,6 +46,7 @@ try {
 }
 
 
+// Query bazë për me nxjerr produktet për kategorinë e zgjedhë
 
 $sql = "SELECT p.* FROM product p
         JOIN sub_category sc ON p.subcategory_id = sc.subcategory_id
@@ -45,17 +54,22 @@ $sql = "SELECT p.* FROM product p
         WHERE c.category_name = ?";
 $params = [$categoryName];
 
+
+// Nese useri ka zgjedh subkategori, shtojna filtrin
 if (!empty($selectedSub)) {
     $sql .= " AND sc.sub_name IN (" . implode(',', array_fill(0, count($selectedSub), '?')) . ")";
     $params = array_merge($params, $selectedSub); 
 }
 
+
+// Nese useri ka zgjedh branda, shtojna edhe qat filter
 if (!empty($selectedBrand)) {
     $sql .= " AND p.brand IN (" . implode(',', array_fill(0, count($selectedBrand), '?')) . ")";
     $params = array_merge($params, $selectedBrand); 
 }
 
 try {
+       // E run query-n edhe i merr produktet
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $products = $stmt->fetchAll();
@@ -68,6 +82,7 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Titulli i faqes -->
     <title><?= htmlspecialchars($categoryName) ?> Products</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -108,10 +123,14 @@ try {
 
     <div class="products-page-container">
     <form method="GET" action="products_by_category.php">
+         <!-- E ruan kategorinë si input të fshehur -->
         <input type="hidden" name="category" value="<?= htmlspecialchars($categoryName) ?>">
 
     <!--pjesa e erises-->
-    
+   
+        
+  
+
         <!-- Subcategory Filter -->
         <div class="filter-section">
             <h4>Subcategories</h4>
@@ -122,6 +141,8 @@ try {
                 </label><br>
             <?php endforeach; ?>
         </div>
+        
+    <!-- Filtrimi i brandave -->
 
         <!-- Brand Filter -->
         <div class="filter-section">
@@ -134,8 +155,12 @@ try {
             <?php endforeach; ?>
         </div>
 
+         <!-- Butoni për me apliku filtrat -->
+
         <button type="submit">Apply Filters</button>
     </form>
+
+    <!-- Lista e produkteve -->
 
     <!-- Product Grid -->
     <div class="product-grid">
@@ -152,6 +177,7 @@ try {
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
+             <!-- Nese nuk ka produkte, jep mesazh -->
             <p style="text-align:center; padding: 20px;">No products found in this category.</p>
         <?php endif; ?>
     </div>
