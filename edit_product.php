@@ -13,7 +13,7 @@ if (!isset($_GET['id'])) {
 
 $product_id = $_GET['id'];
 
-// Fetch product details from the database
+// i emrr te dhanat per produktin prej db
 try {
     $stmt = $pdo->prepare("SELECT * FROM product WHERE id = ?");
     $stmt->execute([$product_id]);

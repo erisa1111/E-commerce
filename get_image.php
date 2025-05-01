@@ -15,7 +15,7 @@ try {
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$product || empty($product['image'])) {
-        // Return a transparent 1x1 pixel if no image exists
+        //nese ksa imazh vec e bon return no si lloj frame
         header('Content-Type: image/png');
         echo base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');
         exit;

@@ -11,7 +11,7 @@ if (isset($_POST['product_id'])) {
     $product_id = $_POST['product_id'];
 
     try {
-        // Delete the product from the database
+        // e shlyen produktin prej db
         $stmt = $pdo->prepare("DELETE FROM product WHERE id = ?");
         $stmt->execute([$product_id]);
 
