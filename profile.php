@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
+// merr id e userit
 $user_id = $_SESSION['user_id'];
 
 // Fetch user data including role
