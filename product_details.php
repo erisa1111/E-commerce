@@ -22,6 +22,7 @@ try {
     if (!$product) {
         die("Product not found.");
     }
+    
 } catch (PDOException $e) {
     die("Error fetching product details: " . $e->getMessage());
 }
