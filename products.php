@@ -2,7 +2,7 @@
 session_start();
 require_once 'db_connect.php';
 
-// Check admin status more securely
+// kontrollon nese je i kycun si admin
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
     header("Location: login.php");
     exit();
