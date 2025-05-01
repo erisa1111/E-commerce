@@ -4,6 +4,7 @@ session_start();
 
 
 // Only connect to DB if user is logged in
+//nese useri osht konektu ose dmth osht ba login lidhu me databaze 
 $user = null;
 if (isset($_SESSION['user_id'])) {
     require_once 'db_connect.php';
@@ -31,6 +32,8 @@ if (isset($_SESSION['user_id'])) {
 </head>
 <body>
     <!-- Navbar Container -->
+<!-- pjesa e navbarit pr mu ba load ne welcome page-->
+
     <div id="navbar-container">
         <div class="loading-spinner"></div>
     </div>
@@ -95,12 +98,14 @@ if (isset($_SESSION['user_id'])) {
     </a>
     </section>
     <br><br><br><br><br><br><br>
-
+    
+<!--pjesa ku bahet load footeri se osht componente ne vete-->
     <!-- Footer Container -->
     <div id="footer-container">
         <div class="loading-spinner"></div>
     </div>
-
+ 
+    <!--pjeset tjera te js qe na duhen-->
     <!-- Load the external JavaScript file -->
     <script src="js/loadComponents.js"></script>
 </body>
