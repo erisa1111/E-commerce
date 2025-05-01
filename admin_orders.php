@@ -58,7 +58,7 @@ try {
 <body>
 <?php include 'navbar/navbar.php'; ?>
 <div id="admin-orders-container">
-
+<!--kjo eshte pjesa e admin qe i menaxhon orders dmth i bon delivered, shipping waiting.. status -->
     <h1>All Orders</h1>
 
     <?php if (isset($error)): ?>
