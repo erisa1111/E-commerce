@@ -110,6 +110,8 @@ try {
     <form method="GET" action="products_by_category.php">
         <input type="hidden" name="category" value="<?= htmlspecialchars($categoryName) ?>">
 
+    <!--pjesa e erises-->
+    
         <!-- Subcategory Filter -->
         <div class="filter-section">
             <h4>Subcategories</h4>
