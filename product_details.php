@@ -6,7 +6,7 @@ require_once 'db_connect.php';
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     die("Product ID not specified.");
 }
-
+#get product id
 $productId = $_GET['id'];
 
 try {
@@ -22,6 +22,7 @@ try {
     if (!$product) {
         die("Product not found.");
     }
+    
 } catch (PDOException $e) {
     die("Error fetching product details: " . $e->getMessage());
 }
