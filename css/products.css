@@ -10,7 +10,7 @@
     margin: 20px 0;
     font-family: Arial, sans-serif;
 }
-
+/*tabela e produkteve*/
 .product-table th, 
 .product-table td {
     padding: 12px 15px;
@@ -44,7 +44,7 @@
     cursor: pointer;
     font-size: 14px;
 }
-
+/*edit buttoni*/
 .edit-btn {
     background-color: #ffc107;
     color: #212529;
