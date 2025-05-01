@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "User registered successfully.\n";
             // per me na funksionu mire test_signup.php duhet me komentu header
             header("Location: home.php"); // Redirect on success
-            exit();
+            exit();// nese deshton
         } else {
             die("Error: Data was not inserted.");
         }
