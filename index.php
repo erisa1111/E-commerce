@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id'])) {
        <p>Explore a wide range of premium beauty brands and products designed to enhance your natural radiance. Whether you're looking for rejuvenating skincare, luxurious makeup, or effective hair care solutions, we offer the best products tailored to your unique beauty needs. Our collection features top-rated brands that prioritize quality, innovation, and sustainability. Embrace the glow within you with the help of our carefully curated selection of beauty essentials. Discover products that not only nourish your skin but also elevate your confidence and well-being. With every product, we strive to provide you with the ultimate beauty experience, bringing you the best of skincare, makeup, and personal care, all in one place. Your beauty journey begins here with us!</p>
     </section>
      
-    
+<!--ktu dmth jon ashtu si scroll bar me ba qe me mujt mi pa brended cilat i kemi si kompani-->
     <section class="brands-section">
     <h2>Our Brands</h2>
     <div style="display: flex; align-items: center; justify-content: center;">
@@ -75,7 +75,7 @@ if (isset($_SESSION['user_id'])) {
         <button class="arrow-btn" onclick="scrollBrands(200)"><i class="fas fa-chevron-right"></i></button>
     </div>
 </section>
-
+<!--qka ka me dal te section qe ka mi permbajte 6 karta si grid qe jon dmth ato kategorite e produkteve -->
     <!-- Category Cards Grid -->
     <section class="category-grid">
     <a href="products_by_category.php?category=Perfumes" class="category-card" style="background-image: url('img/perfumes.png');">
