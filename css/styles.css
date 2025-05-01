@@ -4,6 +4,7 @@ html, body {
     width: 100%;
 }
 
+/*pjesa e fotos kryesore ky ka mu  vendos*/
 .welcome-image-container img {
     width: 100%;
     display: block;
@@ -74,6 +75,7 @@ html, body {
     font-size: 18px;
 }
 
+/*qka ka me dal te ato kartat ne grid dmth pjeset kryesore te kategorive ne 6 karta*/
 .category-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
