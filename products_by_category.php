@@ -126,8 +126,11 @@ try {
          <!-- E ruan kategorinë si input të fshehur -->
         <input type="hidden" name="category" value="<?= htmlspecialchars($categoryName) ?>">
 
+    <!--pjesa e erises-->
+   
         
-    <!-- Filtrimi i subkategorive -->
+  
+
         <!-- Subcategory Filter -->
         <div class="filter-section">
             <h4>Subcategories</h4>
